@@ -1,4 +1,4 @@
-package pro.sky.java.course2.examinerservice.examinercontroller;
+package pro.sky.java.course2.examinerservice.controller;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
