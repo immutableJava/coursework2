@@ -2,6 +2,7 @@ package pro.sky.java.course2.examinerservice.service;
 
 import org.springframework.stereotype.Service;
 import pro.sky.java.course2.examinerservice.Question;
+import pro.sky.java.course2.examinerservice.exceptions.NoQuestionException;
 
 import java.util.*;
 
@@ -12,9 +13,8 @@ public class JavaQuestionService implements QuestionService{
 
     @Override
     public Question add(String question, String answer) {
-        Question currentQuestion = new Question(question,answer);
-        questions.add(currentQuestion);
-        return currentQuestion;
+        Question currentQuestion = new Question(question, answer);
+        return add(currentQuestion);
     }
 
     @Override
@@ -46,6 +46,6 @@ public class JavaQuestionService implements QuestionService{
             i.next();
             counter++;
         }
-        return null;
+      throw new NoQuestionException();
     }
 }

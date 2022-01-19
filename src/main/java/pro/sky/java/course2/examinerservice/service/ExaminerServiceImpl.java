@@ -8,7 +8,7 @@ import java.util.*;
 
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
-    private QuestionService questionService;
+    private final QuestionService questionService;
 
     public ExaminerServiceImpl(QuestionService questionService) {
         this.questionService = questionService;
@@ -18,7 +18,12 @@ public class ExaminerServiceImpl implements ExaminerService {
     public Collection<Question> getQuestions(int amount) {
         Set<Question> questionSet = new HashSet<>();
         for (int i = 0; i < amount; i++) {
-            questionSet.add(questionService.getRandomQuestion());
+            Question question = questionService.getRandomQuestion();
+            if(questionSet.contains(question)){
+                i--;
+                continue;
+            }
+            questionSet.add(question);
         }
         return questionSet;
     }

@@ -10,13 +10,13 @@ import java.util.Collection;
 
 @RestController
 public class ExamController {
-    ExaminerService examinerService;
+    private final ExaminerService examinerService;
 
     public ExamController(ExaminerService examinerService) {
         this.examinerService = examinerService;
     }
 
-    @GetMapping("exam/get")
+    @GetMapping("/get")
     public Collection<Question> getQuestions(@RequestParam int amount) {
        return examinerService.getQuestions(amount);
     }

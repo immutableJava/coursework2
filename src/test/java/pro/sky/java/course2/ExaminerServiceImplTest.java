@@ -28,6 +28,6 @@ public class ExaminerServiceImplTest {
     public void shouldGenerateQuestionList() {
         Question t = new Question("5 + 5", "10");
         when(questionService.getRandomQuestion()).thenReturn(t);
-        assertIterableEquals(Set.of(t), out.getQuestions(1));
+        assertEquals(t, out.getQuestions(1));
     }
 }

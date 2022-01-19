@@ -11,24 +11,24 @@ import pro.sky.java.course2.examinerservice.service.QuestionService;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/exam")
+@RequestMapping("/java")
 public class JavaController {
-    QuestionService questionService;
+    private final QuestionService questionService;
 
-    public JavaController(@Qualifier("javaQuestionService") QuestionService questionService) {
+    public JavaController(QuestionService questionService) {
         this.questionService = questionService;
     }
 
-    @GetMapping("/java/add")
+    @GetMapping("/add")
     public Question addQuestion(@RequestParam String question, @RequestParam String answer) {
         return questionService.add(new Question(question, answer));
     }
 
-    @GetMapping("/java/remove")
+    @GetMapping("/remove")
     public Question removeQuestion(@RequestParam String question, @RequestParam String answer) {
         return questionService.remove(new Question(question, answer));
     }
-    @GetMapping("/java")
+    @GetMapping()
     public Collection<Question> getQuestions(){
         return questionService.getAll();
     }
